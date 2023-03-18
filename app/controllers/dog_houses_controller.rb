@@ -1,10 +1,15 @@
 class DogHousesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
+  def index 
+    render json: DogHouse.all
+  end
+
   def show
     dog_house = DogHouse.find(params[:id])
     render json: dog_house
   end
+
 
   private
 
